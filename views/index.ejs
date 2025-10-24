@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-900 h-screen p-4 ">
+    <form action="/create" method="post" class="gap-4 flex flex-col">
+        <input type="text" name="Task" placeholder="enter task name" class="w-full h-[10vh] resize-none bg-gray-800 text-white border p-2"/>
+        <input type="text" name="Details" placeholder="Enter task details" class="w-full h-[10vh] resize-none bg-gray-800 text-white border p-2 "/>
+        <button type="submit" class="bg-blue-500 text-white w-[50%] p-2">Add Task</button>
+    </form>
+
+    <div class="w-full h-[60%] bg-blue-500 rounded-3xl mt-4 p-4 flex justify-start items-center">
+        <% if(files && files.length > 0) { %>
+            <% files.forEach(file => { %>
+                <div class="w-[30%] h-full bg-gray-800 rounded-3xl p-4 text-white flex flex-col gap-4 mr-4">
+                    <h1 class="text-4xl"><%= file.filename %></h1>
+                    <p class="text-xl"><%= file.content %></p>
+                </div>
+            <% }) %>
+        <% }else{ %>
+            <h1 class="text-2xl text-white w-[30%] h-full p-4 rounded-3xl bg-gray-800">No Tasks Available</h1>
+        <% } %>
+    </div>
+  </body>
+</html>
